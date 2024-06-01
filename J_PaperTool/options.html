@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J_PaperTool</title>
+    <script src="./lib/pdf.js"></script>
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <script src="./lib/bootstrap.bundle.min.js"></script>
+    <script src="./lib/jquery.min.js"></script>
+    <script src="./js/match.js"></script>
+    <script src="./js/J_PDF.js"></script>
+</head>
+
+<body>
+    <div class="container my-5">
+        <div class="row">
+            <h1>J_PaperTool</h1>
+            <h2>By 槿铃兔</h2>
+        </div>
+        <div class="row">
+            <h2>一、选项</h2>
+        </div>
+        <div class="row mt-3">
+            <h3>配置选择（用于导出和导入已准备好的本地查重库）</h3>
+        </div>
+        <div class="row justify-content-center mb-3">
+            <div class="col">
+                <button type="button" id="b3" class="btn btn-primary">导出当前配置</button>
+                <button type="button" id="b5" class="btn btn-danger">重置当前配置（双击）</button>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">加载配置文件</span>
+                    <input type="file" id="file2" class="form-control">
+    
+                    <button class="btn btn-outline-secondary" type="button" id="b4">加载</button>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <h3>本地查重库（添加待比对的论文的PDF或文本至查重库用于查重）</h3>
+        </div>
+        <div class="row justify-content-center mb-3">
+            <div class="col">
+                <div style="overflow-y: scroll; max-height: 500px;">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">词数<div id="d1"></div>
+                                </th>
+                                <th scope="col">双击删除</th>
+                            </tr>
+                        </thead>
+                        <tbody id="t1">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="input-group mb-3">
+                <span class="input-group-text">加载PDF文件至库</span>
+                <input type="file" id="file" multiple class="form-control">
+
+                <button class="btn btn-outline-secondary" type="button" id="b1">添加</button>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="input-group mb-3">
+                <span class="input-group-text">添加文本至库(Name/Content)</span>
+                <input type="text" id="i6" class="form-control" placeholder="Name">
+                <input type="text" id="i7" class="form-control" placeholder="Content">
+                <button class="btn btn-outline-secondary" type="button" id="b2">添加</button>
+            </div>
+        </div>
+        <div class="row">
+            <h3>查重规则（不懂可以不用动，这个选项已按照标准查重网站的规则设置了）</h3>
+        </div>
+        <div class="row">
+            <div class="input-group mb-3">
+                <span class="input-group-text">最少匹配词数</span>
+                <input id="i1" type="number" class="form-control" placeholder="6">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text">最大欠匹配间隔</span>
+                <input id="i2" type="number" class="form-control" placeholder="4">
+            </div>
+        </div>
+        <div class="row">
+            <h3>其他设置</h3>
+        </div>
+        <div class="row">
+            <div class="form-check form-switch mb-3 mx-3">
+                <input id="i3" class="form-check-input" type="checkbox">
+                <label class="form-check-label" for="flexSwitchCheckDefault">自动填写选中的内容</label>
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text">编辑后延迟刷新时间（毫秒）</span>
+                <input id="i4" type="number" class="form-control" placeholder="1000">
+            </div>
+            <div><button id="shortcuts-btn" class="btn btn-primary">打开快捷键设置</button>（建议在chrome中设置扩展程序J_PaperTool的启动快捷键，更方便）</div>
+        </div>
+        <div class="row">
+            <h2>二、使用说明</h2>
+        </div>
+        <div class="row">
+            <div>由于查重网站按次计费，而时常我们改写的结果仍然会导致大量的重复，写作时进行反复降重并反复查重耗时费力，本程序旨在通过与一些可能重复的文本进行比较并标明重复位置以辅助写作者降重。以下说明使用方法：</div>
+            <div>1. 将可能与写作内容存在重复的文本加入到本地查重库（可直接导入PDF或添加纯文本）</div>
+            <div>2. 选中待查重的文本并打开本插件的弹窗（可通过快捷键打开），已选择的文本会自动查重并显示在弹窗中</div>
+            <img src="./img/1.png" class="w-50">
+            <div>3. 不同颜色表示与不同文本重复的部分，点击带有颜色的文本可显示本地查重库中重复文本的原始信息</div>
+            <img src="./img/2.png" class="w-50">
+            <div>4. 可直接在弹窗中修改，插件每隔一定时间（此时间通过“编辑后延迟刷新时间（毫秒）”修改）进行一次查重并显示新的结果</div>
+            <div>5. 为方便切换不同的本地查重库，可导出和导入已准备好的文献查重库，文件默认名为Jpreset.json</div>
+        </div>
+    </div>
+
+</body>
+<script src="option.js"></script>
+</html>

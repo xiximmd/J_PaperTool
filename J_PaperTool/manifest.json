@@ -1,0 +1,20 @@
+{
+    "manifest_version": 3,
+    "name": "J_PaperTool",
+    "version": "0.1",
+    "description": "test",
+    "action": {
+        "default_popup": "popup.html"
+    },
+    "options_page": "options.html",
+    "background": {
+        "service_worker": "background.js"
+    },
+    "permissions": [
+        "storage",
+        "unlimitedStorage",
+        "contextMenus",
+        "scripting",
+        "activeTab"
+    ]
+}

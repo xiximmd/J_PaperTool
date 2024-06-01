@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>J_PaperTool</title>
+    <script src="./js/match.js"></script>
+    <script src="./lib/pdf.js"></script>
+    <script src="./lib/jquery.min.js"></script>
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+</head>
+<style>
+    .hl0 {
+        background-color: rgb(255, 135, 135);
+    }
+
+    .hl1 {
+        background-color: rgb(143, 255, 135);
+    }
+
+    .hl2 {
+        background-color: rgb(169, 135, 255);
+    }
+
+    .hl3 {
+        background-color: rgb(243, 255, 135);
+    }
+
+    .hl4 {
+        background-color: rgb(255, 135, 219);
+    }
+
+    body {
+
+        font-size: large;
+    }
+</style>
+
+<body style="width: 400px;background-color: rgb(200, 235, 223);" class="container">
+    <div contenteditable="plaintext-only" id="d1" style="min-height: 50px;max-height: 400px;overflow:auto" class="mt-1 form-control"></div>
+    <div id="d2" class="m-3 p-2" style="background-color: rgb(205, 205, 205);border-radius: 5px;display: none;"></div>
+    <button class="btn btn-primary" id="options-btn" style="margin: 5px;">选项及使用说明</button>
+    <script src="./lib/bootstrap.bundle.min.js"></script>
+</body>
+<script src="popup.js"></script>
+
+</html>
